@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { Comment } from './class/comment';
+import { User } from './class/user';
+
+const CURRENT_USER: User = new User(1, "わとそん");
+const ANOTHER_USER: User = new User(2, "たくみん")
 
 const COMMENTS: Comment[] = [
-  { name: '渡邉 拓未', message: 'お疲れ様です'},
-  { name: 'わとそん', message: '知的レベル高いよ'},
-  { name: 'たくみん', message: 'おっす！'},
-  { name: 'たっくん', message: 'なんだべさ'},
+  new Comment(CURRENT_USER, 'わとそんだぞー'),
+  new Comment(ANOTHER_USER, '痛いみにまけるな！'),
+  new Comment(CURRENT_USER, 'わっしょい！'),
+  new Comment(ANOTHER_USER, 'おそいよ~~~'),
 ];
 
 @Component({
@@ -16,5 +20,5 @@ const COMMENTS: Comment[] = [
 
 export class AppComponent {
   comments = COMMENTS;
-
+  currentUser = CURRENT_USER;
 }
