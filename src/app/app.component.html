@@ -4,15 +4,18 @@
       <ng-container *ngFor="let comment of comments">
         <div class="list-group-item list-group-item-action flex-column align-items-start border-0">
             <div class="media">
-              <div class="media-left">
-                <a href="#" class="icon">竹</a>
+              <div class="media-left" *ngIf="comment.user.uid !== currentUser.uid">
+                <a href="#" class="icon">{{ comment.initial }}</a>
               </div>
               <div class="media-body">
                 <div class="d-flex w-100 justify-content-between">
-                  <h4 class="media-heading">{{ comment.name }}</h4>
+                  <h4 class="media-heading">{{ comment.user.name }}</h4>
                   <small class="media-date">2017/12/01</small>
                 </div>
                 <pre>{{ comment.message }}</pre>
+              </div>
+              <div class="media-right" *ngIf="comment.user.uid === currentUser.uid">
+                <a href="#" class="icon">{{ comment.initial }}</a>
               </div>
             </div>
           </div>
